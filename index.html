@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aniversário da Cíntya 🪿</title>
+
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px 15px;
+    background: linear-gradient(180deg, #DDF4FF, #B9E5F7, #91D5EE);
+    color: #536B78;
+}
+
+/* Lagoa e ondas */
+.oceano {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+.onda {
+    position: absolute;
+    width: 200%;
+    height: 180px;
+    left: -50%;
+    bottom: -50px;
+    border-radius: 45%;
+    background: rgba(255,255,255,.20);
+    animation: onda 9s linear infinite;
+}
+.onda:nth-child(2) {
+    bottom: -80px;
+    animation-duration: 13s;
+    animation-direction: reverse;
+    background: rgba(255,255,255,.13);
+}
+.onda:nth-child(3) {
+    bottom: -110px;
+    animation-duration: 16s;
+    background: rgba(93,183,218,.15);
+}
+@keyframes onda {
+    from { transform: translateX(0) rotate(0deg); }
+    to { transform: translateX(12%) rotate(8deg); }
+}
+
+/* Decorações */
+.decoracao {
+    position: fixed;
+    pointer-events: none;
+    z-index: 1;
+    font-size: 35px;
+    animation: flutuar 4s ease-in-out infinite;
+}
+.flor1 { top: 9%; left: 8%; }
+.flor2 { top: 18%; right: 9%; animation-delay: 1s; }
+.flor3 { bottom: 15%; left: 13%; animation-delay: 2s; }
+.bolha1 { top: 40%; left: 5%; }
+.bolha2 { top: 60%; right: 6%; animation-delay: 2s; }
+
+@keyframes flutuar {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+/* Gansinhos nadando */
+.ganso {
+    position: fixed;
+    bottom: 35px;
+    font-size: 65px;
+    z-index: 2;
+    pointer-events: none;
+    animation: nadar 4s ease-in-out infinite;
+}
+.ganso1 { left: 5%; }
+.ganso2 { right: 5%; animation-delay: 1.5s; }
+@keyframes nadar {
+    0%, 100% { transform: translateY(0) rotate(-5deg); }
+    50% { transform: translateY(-14px) rotate(5deg); }
+}
+
+/* Cartão */
+.container {
+    position: relative;
+    z-index: 5;
+    background: #FFF9E8;
+    width: 100%;
+    max-width: 460px;
+    padding: 38px 25px;
+    border-radius: 30px;
+    text-align: center;
+    border: 3px solid #FFF0B8;
+    box-shadow: 0 15px 40px rgba(70,130,160,.20);
+    animation: aparecer .7s ease;
+}
+@keyframes aparecer {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.patinhos {
+    font-size: 70px;
+    margin-bottom: 15px;
+    animation: flutuar 2s infinite ease-in-out;
+}
+h1 {
+    color: #D9A82E;
+    font-size: 27px;
+    margin-bottom: 15px;
+}
+p {
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 22px;
+}
+input {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #C9E8F7;
+    border-radius: 15px;
+    outline: none;
+    font-size: 16px;
+    margin-bottom: 15px;
+    background: white;
+    color: #536B78;
+}
+input:focus { border-color: #8CCDE9; }
+button {
+    background: #F5D77B;
+    color: #536B78;
+    border: none;
+    padding: 15px 22px;
+    border-radius: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .3s;
+    margin: 5px;
+    max-width: 100%;
+}
+button:hover {
+    transform: translateY(-3px);
+    background: #F0CB5D;
+}
+button:disabled { opacity: .65; cursor: wait; transform: none; }
+.azul { background: #C9E8F7; }
+.azul:hover { background: #A9D8EF; }
+.botoes { display: flex; flex-direction: column; gap: 8px; }
+.botoes button { width: 100%; margin: 0; }
+.rodape {
+    font-size: 13px;
+    color: #91A8B5;
+    margin-top: 22px;
+    margin-bottom: 0;
+}
+
+/* Paleta de cores no convite final */
+.paleta {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 12px 0 22px;
+}
+.cor {
+    min-width: 92px;
+    padding: 12px 10px;
+    border-radius: 12px;
+    border: 1px solid rgba(83,107,120,.15);
+    font-size: 13px;
+    font-weight: bold;
+}
+.cor-azul { background: #C9E8F7; color: #426B83; }
+.cor-amarelo { background: #FFF0B8; color: #806A32; }
+.cor-branco { background: #FFFFFF; color: #536B78; }
+
+/* Imagem enviada para a tela final */
+.foto-aniversario {
+    display: block;
+    width: 100%;
+    max-width: 390px;
+    height: auto;
+    margin: 22px auto 5px;
+    border-radius: 18px;
+    box-shadow: 0 8px 22px rgba(70,130,160,.18);
+}
+
+@media (max-width: 500px) {
+    .container { padding: 30px 20px; }
+    .ganso { font-size: 45px; bottom: 12px; }
+    .decoracao { font-size: 25px; }
+    h1 { font-size: 24px; }
+    .foto-aniversario { border-radius: 14px; }
+}
+</style>
+</head>
+
+<body>
+<div class="oceano">
+    <div class="onda"></div>
+    <div class="onda"></div>
+    <div class="onda"></div>
+</div>
+
+<div class="decoracao flor1">🪿🪿</div>
+<div class="decoracao flor2">🪿🪿</div>
+<div class="decoracao flor3">🪿🪿</div>
+<div class="decoracao bolha1">🪿🪿</div>
+<div class="decoracao bolha2">🪿🪿</div>
+
+<div class="ganso ganso1">🪿🪿</div>
+<div class="ganso ganso2">🪿🪿</div>
+
+<div class="container" id="conteudo">
+    <div class="patinhos">🪿🪿</div>
+    <h1>Quá quá!</h1>
+    <p>
+        Você recebeu um convite especial!
+        <br><br>
+        O aniversário de 22 anos da Cíntya está chegando!
+        <br><br>
+        Mas antes, queremos saber quem está chegando à nossa lagoa! 💛
+    </p>
+    <input type="text" id="nome" placeholder="Digite seu nome..." maxlength="60">
+    <button onclick="prosseguir()">Prosseguir 💛</button>
+    <p class="rodape">Uma comemoração muito especial espera por você!</p>
+</div>
+
+<script>
+const URL_SCRIPT = "https://script.google.com/macros/s/AKfycbz6vcFxzB-CZnARy_AmEo15e4iheU5V_S1zVOJl3UsNsMC6NHU7CRatONPrMb6lKiGa/exec";
+let nomeConvidado = "";
+
+function escapar(texto) {
+    return texto.replace(/[&<>"']/g, function(letra) {
+        return {
+            "&": "&amp;", "<": "&lt;", ">": "&gt;",
+            '"': "&quot;", "'": "&#039;"
+        }[letra];
+    });
+}
+
+function atualizarTela(html) {
+    const conteudo = document.getElementById("conteudo");
+    conteudo.style.animation = "none";
+    conteudo.innerHTML = html;
+    void conteudo.offsetWidth;
+    conteudo.style.animation = "aparecer .7s ease";
+}
+
+/* Envia a resposta para o Google Apps Script.
+   O modo no-cors não permite ao navegador confirmar o recebimento.
+   O teste real é verificar se o e-mail chegou. */
+async function enviarEmail(presenca, acompanhantes) {
+    const dados = {
+        nome: nomeConvidado,
+        presenca: presenca,
+        acompanhantes: acompanhantes
+    };
+
+    try {
+        await fetch(URL_SCRIPT, {
+            method: "POST",
+            mode: "no-cors",
+            headers: { "Content-Type": "text/plain;charset=utf-8" },
+            body: JSON.stringify(dados)
+        });
+        return true;
+    } catch (erro) {
+        console.error("Erro ao enviar confirmação:", erro);
+        return false;
+    }
+}
+
+function prosseguir() {
+    const nome = document.getElementById("nome").value.trim();
+    if (!nome) {
+        alert("Quá quá! Primeiro precisamos saber seu nome! 🪿");
+        return;
+    }
+    nomeConvidado = nome;
+    telaPresenca();
+}
+
+function telaPresenca() {
+    atualizarTela(`
+        <div class="patinhos">🪿🪿</div>
+        <h1>Que bom ter você aqui!</h1>
+        <p>
+            ${escapar(nomeConvidado)}, você está convidado
+            para comemorar os 22 anos da Cíntya! 🎂
+            <br><br>
+            Podemos contar com sua presença?
+        </p>
+        <div class="botoes">
+            <button onclick="confirmarPresenca()">Sim, estarei lá! 💛</button>
+            <button class="azul" onclick="recusarPresenca()">Infelizmente não poderei ir</button>
+        </div>
+    `);
+}
+
+function confirmarPresenca() {
+    atualizarTela(`
+        <div class="patinhos">🪿💙🪿</div>
+        <h1>Obaaaa!</h1>
+        <p>
+            Ficamos muito felizes que você estará conosco,
+            ${escapar(nomeConvidado)}!
+            <br><br>
+            Você pretende levar mais alguém para a festa?
+        </p>
+        <div class="botoes">
+            <button onclick="telaQuantidade()">Sim, vou levar! 🪿</button>
+            <button class="azul" onclick="finalizar(0)">Não, vou sozinho(a)</button>
+        </div>
+    `);
+}
+
+async function recusarPresenca() {
+    atualizarTela(`
+        <div class="patinhos">🪿💙🪿</div>
+        <h1>Que pena!</h1>
+        <p>
+            Sentiremos sua falta, ${escapar(nomeConvidado)}!
+            <br><br>
+            Muito obrigado por responder ao nosso convite. 💛
+        </p>
+        <p class="rodape">Enviando sua resposta...</p>
+    `);
+    await enviarEmail("Não comparecerá", 0);
+}
+
+function telaQuantidade() {
+    atualizarTela(`
+        <div class="patinhos">🪿🪿</div>
+        <h1>Mais gente na lagoa!</h1>
+        <p>
+            Quantas pessoas irão acompanhar você,
+            ${escapar(nomeConvidado)}?
+        </p>
+        <input type="number" id="quantidade" min="1" max="50"
+               placeholder="Quantidade de acompanhantes">
+        <button onclick="enviarQuantidade()">Confirmar 💛</button>
+    `);
+}
+
+function enviarQuantidade() {
+    const quantidade = Number(document.getElementById("quantidade").value);
+
+    if (!Number.isInteger(quantidade) || quantidade < 1 || quantidade > 50) {
+        alert("Informe uma quantidade entre 1 e 50!");
+        return;
+    }
+    finalizar(quantidade);
+}
+
+async function finalizar(total) {
+    atualizarTela(`
+        <div class="patinhos">🪿🎉🪿</div>
+        <h1>Muito obrigada!</h1>
+        <p>
+            Sua resposta foi registrada, ${escapar(nomeConvidado)}!
+            <br><br>
+            ${total === 0
+                ? "Estamos esperando você nessa comemoração especial!"
+                : "Você confirmou " + total +
+                  " acompanhante(s). Será uma alegria receber todos vocês!"
+            }
+            <br><br>
+            Esperamos você no dia 26 de dezembro! 💛
+        </p>
+
+        <p>
+            📍 Balneário Maia<br>
+            Remígio - PB 
+            A partir das 10h
+        </p>
+
+        <p>
+            Fique à vontade para entrar no clima dos 2 Patinhos na Lagoa
+            usando as cores da nossa paleta! 
+        </p>
+
+        <div class="paleta">
+            <div class="cor cor-azul">Azul pastel</div>
+            <div class="cor cor-amarelo">Amarelo pastel</div>
+            <div class="cor cor-branco">Branco</div>
+        </div>
+
+        <img
+            class="foto-aniversario"
+            src="cintya-22.jpg"
+            alt="Imagem de aniversário de 22 anos da Cíntya"
+        >
+
+        <div class="patinhos" style="margin-top:18px;">🪿🪿</div>
+        <p class="rodape">Com carinho, Cíntya Santos.</p>
+        <p class="rodape" id="statusEmail">Enviando sua resposta...</p>
+    `);
+
+    const enviado = await enviarEmail("Presença confirmada", total);
+    const status = document.getElementById("statusEmail");
+
+    if (status) {
+        status.textContent = enviado
+            ? "Obrigada por responder ao nosso convite! 💛"
+            : "Não foi possível enviar a resposta. Avise a organização da festa.";
+    }
+}
+</script>
+</body>
+</html>
