@@ -356,7 +356,7 @@ function enviarQuantidade() {
     const quantidade = Number(document.getElementById("quantidade").value);
 
     if (!Number.isInteger(quantidade) || quantidade < 1 || quantidade > 50) {
-        alert("Informe uma quantidade entre 1 e 50!");
+        alert("Informe uma quantidade entre 1 e 10!");
         return;
     }
     finalizar(quantidade);
